@@ -75,6 +75,13 @@ export interface StudentProfile { id?: string; userId?: string; bio?: string; fi
 export interface MicroExperience { id?: string; title?: string; description?: string; type?: string; startDate?: string; endDate?: string }
 export interface CVAnalysisResponse { analysis: string; timestamp: number }
 export interface CvSuggestionsResponse { suggestions: string; timestamp: number }
+export interface Comment {
+  id?: string
+  content: string
+  rating: number
+  user?: Pick<User, "id" | "firstName" | "lastName" | "role">
+  createdAt?: string
+}
 
 export function getStoredToken() {
   return typeof localStorage === 'undefined' ? null : localStorage.getItem(TOKEN_KEY)
@@ -105,6 +112,15 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
       const json = JSON.parse(text)
       message = json.message || json.error || text
     } catch {}
+    const lowered = `${message}`.toLowerCase()
+    if (
+      response.status >= 500 &&
+      (lowered.includes('econnrefused') ||
+        lowered.includes('http proxy error') ||
+        lowered.includes('failed to proxy'))
+    ) {
+      throw new Error('Backend indisponible. Lance le serveur Express sur http://localhost:8081.')
+    }
     throw new Error(message || 'API request failed')
   }
   if (response.status === 204) return undefined as T
@@ -203,4 +219,13 @@ export const aiApi = {
   async careerChat(message: string, cvText?: string, analysisText?: string, history?: { role: string; content: string }[]) {
     return request<{ reply: string; timestamp: number }>('/ai/career-chat', { method: 'POST', body: JSON.stringify({ message, cvText, analysisText, history }) })
   }
+}
+
+export const commentsApi = {
+  async getAll() {
+    return request<Comment[]>('/comments')
+  },
+  async create(content: string, rating: number) {
+    return request<Comment>('/comments', { method: 'POST', body: JSON.stringify({ content, rating }) })
+  },
 }

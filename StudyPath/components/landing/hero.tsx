@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Play, Sparkles, Brain, Target, Users } from "lucide-react"
+import { ArrowRight, Brain, Target, Users } from "lucide-react"
 import { motion } from "framer-motion"
 
 interface HeroProps {
@@ -27,11 +27,6 @@ export function LandingHero({ onGetStarted }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
-              <Sparkles className="w-4 h-4" />
-              Propulse par l&apos;Intelligence Artificielle
-            </div>
-
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
               Construisez votre{" "}
               <span className="text-primary">avenir professionnel</span>{" "}
@@ -54,23 +49,6 @@ export function LandingHero({ onGetStarted }: HeroProps) {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
 
-            </div>
-
-            <div className="flex items-center gap-8 pt-4">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full bg-muted border-2 border-background flex items-center justify-center text-xs font-medium"
-                  >
-                    {String.fromCharCode(64 + i)}
-                  </div>
-                ))}
-              </div>
-              <div>
-                <p className="font-semibold">+2,500 etudiants</p>
-                <p className="text-sm text-muted-foreground">nous font confiance</p>
-              </div>
             </div>
           </motion.div>
 

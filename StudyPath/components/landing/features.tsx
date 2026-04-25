@@ -5,7 +5,6 @@ import {
   Calendar, 
   FileText, 
   Users, 
-  Rocket, 
   Brain, 
   Sparkles,
   ArrowRight,
@@ -35,25 +34,11 @@ const features = [
     color: "bg-chart-3/10 text-chart-3"
   },
   {
-    icon: Rocket,
-    title: "Micro-Experiences",
-    description: "Suggestions personnalisees de hackathons, mini-stages et projets associatifs pour enrichir votre parcours.",
-    benefits: ["Hackathons", "Projets reels", "Stages courts"],
-    color: "bg-chart-4/10 text-chart-4"
-  },
-  {
     icon: Brain,
     title: "AI Career Mirror",
     description: "Vision predictive de votre futur professionnel avec recommandations precises pour atteindre vos objectifs de carriere.",
     benefits: ["Prediction IA", "Roadmap personnalisee", "Gap analysis"],
     color: "bg-chart-5/10 text-chart-5"
-  },
-  {
-    icon: Sparkles,
-    title: "Analyse LinkedIn",
-    description: "Scan et evaluation de votre profil LinkedIn pour identifier les ameliorations et optimiser votre visibilite.",
-    benefits: ["Score de profil", "Optimisation SEO", "Benchmarking"],
-    color: "bg-primary/10 text-primary"
   }
 ]
 

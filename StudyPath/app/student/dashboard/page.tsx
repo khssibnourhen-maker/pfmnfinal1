@@ -3,15 +3,15 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import {
   FileText, Calendar, Users, Rocket, Brain, ArrowRight,
-  TrendingUp, Clock, Target, CheckCircle2, Sparkles, Loader2
+  Clock, CheckCircle2, Sparkles, Loader2
 } from "lucide-react"
 import Link from "next/link"
 import { useAuth } from "@/context/AuthContext"
 import { cvsApi, schedulesApi, mentorMatchesApi, Schedule } from "@/lib/api"
+import { AddCommentDialog } from "@/components/comments/add-comment-dialog"
 
 export default function StudentDashboard() {
   const { user } = useAuth()
@@ -55,11 +55,14 @@ export default function StudentDashboard() {
           </h1>
           <p className="text-muted-foreground">Voici un aperçu de votre progression aujourd'hui</p>
         </div>
-        <Button asChild className="shadow-lg shadow-primary/25">
-          <Link href="/student/cv-builder">
-            <Sparkles className="w-4 h-4 mr-2" />Continuer mon CV
-          </Link>
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <AddCommentDialog />
+          <Button asChild className="shadow-lg shadow-primary/25">
+            <Link href="/student/cv-builder">
+              <Sparkles className="w-4 h-4 mr-2" />Continuer mon CV
+            </Link>
+          </Button>
+        </div>
       </div>
 
       {/* Stats */}

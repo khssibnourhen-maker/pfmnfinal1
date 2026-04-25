@@ -10,6 +10,7 @@ import messagesRoutes from './routes/messagesRoutes.js'
 import schedulesRoutes from './routes/schedulesRoutes.js'
 import cvsRoutes from './routes/cvsRoutes.js'
 import aiRoutes from './routes/aiRoutes.js'
+import commentsRoutes from './routes/commentsRoutes.js'
 import { errorHandler, notFound } from './middleware/errorHandler.js'
 
 export function createApp() {
@@ -33,6 +34,7 @@ export function createApp() {
   app.use('/api/schedules', schedulesRoutes)
   app.use('/api/cvs', cvsRoutes)
   app.use('/api/ai', aiRoutes)
+  app.use('/api/comments', commentsRoutes)
 
   app.use(notFound)
   app.use(errorHandler)

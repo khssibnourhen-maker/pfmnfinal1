@@ -50,13 +50,6 @@ export function LandingCTA({ onGetStarted }: CTAProps) {
                 Commencer gratuitement
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <Button 
-                size="lg"
-                variant="outline"
-                className="text-base px-8 border-white/30 text-white hover:bg-white/10"
-              >
-                Parler a un conseiller
-              </Button>
             </div>
 
             <p className="text-sm text-white/60 mt-6">

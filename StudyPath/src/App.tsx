@@ -15,6 +15,7 @@ import MentorStudents from '@/app/mentor/students/page'
 import MentorSessions from '@/app/mentor/sessions/page'
 import MentorPlanning from '@/app/mentor/planning/page'
 import MentorMessages from '@/app/mentor/messages/page'
+import { Toaster } from '@/components/ui/toaster'
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="messages" element={<MentorMessages />} />
         </Route>
       </Routes>
+      <Toaster />
     </AuthProvider>
   )
 }

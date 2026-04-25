@@ -22,6 +22,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { schedulesApi, cvsApi, Schedule } from "@/lib/api"
+import { AddCommentDialog } from "@/components/comments/add-comment-dialog"
 
 export default function MentorDashboard() {
   const { user } = useAuth()
@@ -101,6 +102,7 @@ export default function MentorDashboard() {
           <p className="text-muted-foreground">Voici un apercu de votre activite de mentorat</p>
         </div>
         <div className="flex gap-3">
+          <AddCommentDialog />
           <Button variant="outline" asChild>
             <Link href="/mentor/cv-review">
               <FileText className="w-4 h-4 mr-2" />
